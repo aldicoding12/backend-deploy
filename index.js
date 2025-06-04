@@ -3,6 +3,7 @@ import CockieParse from "cookie-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import helmet from "helmet";
+const cors = require("cors");
 import EkspressMongoSanitize from "express-mongo-sanitize";
 
 dotenv.config();
@@ -16,6 +17,16 @@ app.use(EkspressMongoSanitize());
 app.use(CockieParse());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
+
+// middleware untuk mengizinkan frontend mengakses backend
+
+app.use(
+  cors({
+    origin: "https://frontend-deploy-production.up.railway.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // import lainnya
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
