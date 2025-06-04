@@ -11,6 +11,8 @@ const port = 3000;
 
 // middelawre json
 app.use(express.json());
+app.use(helmet());
+app.use(EkspressMongoSanitize());
 app.use(CockieParse());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
