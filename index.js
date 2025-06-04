@@ -3,7 +3,7 @@ import CockieParse from "cookie-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import helmet from "helmet";
-const cors = require("cors");
+import cors from "cors";
 import EkspressMongoSanitize from "express-mongo-sanitize";
 
 dotenv.config();
